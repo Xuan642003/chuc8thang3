@@ -52,7 +52,36 @@ border-radius:10px;
 left:50%;
 transform:translateX(-50%);
 }
+#controls{
 
+position:fixed;
+bottom:80px;
+
+width:100%;
+
+display:flex;
+justify-content:space-between;
+
+padding:0 40px;
+
+box-sizing:border-box;
+}
+
+#controls button{
+
+font-size:28px;
+
+width:80px;
+height:60px;
+
+border:none;
+border-radius:15px;
+
+background:white;
+
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+
+}
 /* màn thắng */
 
 #win{
@@ -89,7 +118,10 @@ margin-bottom:20px;
 <div id="score">Điểm: 0</div>
 
 <div id="bar"></div>
-
+<div id="controls">
+<button id="leftBtn">◀</button>
+<button id="rightBtn">▶</button>
+</div>
 <div id="win">
 
 <img src="img20.jpg">
@@ -158,7 +190,37 @@ barX+=40
 bar.style.left=barX+"px"
 
 })
+const leftBtn=document.getElementById("leftBtn")
+const rightBtn=document.getElementById("rightBtn")
 
+function moveBar(x){
+
+const width = window.innerWidth
+const barWidth = 150
+
+barX = x
+
+if(barX < barWidth/2) barX = barWidth/2
+if(barX > width - barWidth/2) barX = width - barWidth/2
+
+bar.style.left = barX + "px"
+}
+
+/* nút trái */
+
+leftBtn.addEventListener("click",()=>{
+
+moveBar(barX-50)
+
+})
+
+/* nút phải */
+
+rightBtn.addEventListener("click",()=>{
+
+moveBar(barX+50)
+
+})
 /* tạo vật */
 
 function createItem(){
