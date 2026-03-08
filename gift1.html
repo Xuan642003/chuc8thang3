@@ -132,6 +132,13 @@ barX=e.clientX
 bar.style.left=barX+"px"
 })
 
+document.addEventListener("touchmove",e=>{
+
+barX = e.touches[0].clientX
+
+bar.style.left = barX + "px"
+
+})
 /* di chuyển phím */
 
 document.addEventListener("keydown",e=>{
